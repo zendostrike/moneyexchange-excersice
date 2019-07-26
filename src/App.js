@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { getDollarCurrencyRate } from "./services";
+import { Header, Body, Footer } from "./components";
 
 function App() {
+  const [exchangeRateData, setExchangeRateData] = useState(null);
+  
+  async function fetchData() {
+    const data = await getDollarCurrencyRate();
+    setExchangeRateData(data)
+  }
+
+  useEffect(() => {
+    /** Load data the first time component loads */
+    fetchData();
+
+    /** Load data each ten minuts */
+    const interval = setInterval(() => {
+      fetchData();
+    }, 600000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Body exchangeRateData={exchangeRateData} />
+      <Footer />
     </div>
   );
 }
