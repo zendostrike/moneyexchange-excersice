@@ -33,14 +33,14 @@ const ExchangeForm = ({ exchangeRate }) => {
 
                             const formattedResult = currencyFormatter(strAmount);
 
-                            setSourceAmount(`$${formattedResult}`);
+                            setSourceAmount(`€${formattedResult}`);
                         }}
                         value={sourceAmount}
-                        placeholder="USD"
+                        placeholder="EUR"
                     />
                 </FormItem>
                 <FormItem>
-                    <Input value={resultAmount} type="text" placeholder="EU" disabled />
+                    <Input value={resultAmount} type="text" placeholder="USD" disabled />
                 </FormItem>
             </InputsContainer>
             <InputsContainer>
@@ -56,7 +56,7 @@ const ExchangeForm = ({ exchangeRate }) => {
                             const convertedAmount = floatValue * parseFloat(exchangeRate);
 
                             const formattedResult = currencyFormatter(convertedAmount.toString());
-                            setResultAmount(`€${formattedResult}`);
+                            setResultAmount(`$${formattedResult}`);
                         }}
                     >
                             Calculate

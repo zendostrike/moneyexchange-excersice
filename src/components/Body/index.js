@@ -7,7 +7,7 @@ import ExchangeForm from "../ExchangeForm";
 const Body = ({ exchangeRateData }) => (
     <BodyContainer>
         {exchangeRateData ? (
-            <ExchangeForm exchangeRate={exchangeRateData.quotes.USDEUR} />
+            <ExchangeForm exchangeRate={exchangeRateData.rates.USD} />
         ) : <div>Loading exchange rate...</div>}
     </BodyContainer>
 );

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = "http://www.apilayer.net/api/live?access_key=c079f1ce2fc8784fbc22342914d9ad43&format=1&currencies=EUR";
+const url = "http://data.fixer.io/api/latest?access_key=e6375b0ac6f7bb52859ed163c5d609bf";
 
 const getDollarCurrencyRate = async function getUser() {
     try {
